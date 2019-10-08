@@ -227,7 +227,7 @@ module CarrierWave
     def get_image
       cache_stored_file! unless cached?
       @_vimage ||= if jpeg? || png?
-                     ::Vips::Image.new_from_file(current_path, access: :sequential)
+                     ::Vips::Image.new_from_file(current_path) # remove ", access: :sequential" because of hint in https://github.com/libvips/libvips/issues/875#issuecomment-364369537 to avoid "Out of Order read error"
                    else
                      ::Vips::Image.new_from_file(current_path)
                    end
