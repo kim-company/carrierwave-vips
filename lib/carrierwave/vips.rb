@@ -15,7 +15,7 @@ module CarrierWave
       @config
     end
 
-    def self.included(base)
+    def Vips.included(base)
       base.send(:extend, ClassMethods)
     end
 
